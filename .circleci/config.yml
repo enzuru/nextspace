@@ -8,8 +8,11 @@ jobs:
           name: Add EPEL
           command: yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
       - run:
-          name: Update YUM
+          name: Update Yum
           command: yum -y update
+      - run:
+          name: Install git
+          command: yum y install git
       - run:
           name: Install X Window System
           command: yum -y groupinstall "X Window System"
@@ -67,7 +70,6 @@ jobs:
             make
             make install
             ldconfig
-            cd
       - run:
           name: Build and install libs-gui
           command: |
@@ -77,7 +79,6 @@ jobs:
             ./configure && make
             make install
             ldconfig
-            cd
       - run:
           name: Build and install libs-back
           command: |
@@ -88,7 +89,6 @@ jobs:
             make
             make fonts=no install
             ldconfig
-            cd
       - checkout
       - run:
           name: Build and install Frameworks
@@ -100,5 +100,6 @@ jobs:
       - run:
           name: Build and install Applications
           command: |
+            cd Applications
             make
             make install
