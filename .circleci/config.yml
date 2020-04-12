@@ -62,6 +62,9 @@ jobs:
           name: Install nextspace-applications-devel
           command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/nextspace-applications-devel-0.85-3.el7.x86_64.rpm
       - run:
+          name: Source profile
+          command: source ~/.profile
+      - run:
           name: Build and install libs-base
           command: |
             CC=/usr/bin/clang
