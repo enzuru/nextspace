@@ -17,6 +17,9 @@ jobs:
           name: Install libffi
           command: yum -y install libffi libffi-devel
       - run:
+          name: Install libxml2
+          command: yum -y install libxml2 libxml2-devel
+      - run:
           name: Install X Window System
           command: yum -y groupinstall "X Window System"
       - run:
