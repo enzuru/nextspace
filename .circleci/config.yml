@@ -15,7 +15,7 @@ jobs:
           command: yum -y install git
       - run:
           name: Install libffi
-          command: yum -y install libffi
+          command: yum -y install libffi libffi-devel
       - run:
           name: Install X Window System
           command: yum -y groupinstall "X Window System"
