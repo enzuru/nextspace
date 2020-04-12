@@ -67,6 +67,7 @@ jobs:
       - run:
           name: Build and install libs-base
           command: |
+            source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
             GNUSTEP_MAKEFILES=/Developer/Makefiles
             git clone https://github.com/gnustep/libs-base
