@@ -64,6 +64,7 @@ jobs:
       - run:
           name: Build and install libs-base
           command: |
+            GNUSTEP_MAKEFILES=/Developer/Makefiles
             git clone https://github.com/gnustep/libs-base
             cd libs-base
             ./configure --disable-mixedabi
@@ -73,15 +74,18 @@ jobs:
       - run:
           name: Build and install libs-gui
           command: |
+            GNUSTEP_MAKEFILES=/Developer/Makefiles
             git clone https://github.com/gnustep/libs-gui
             cd libs-gui
             git checkout nextspace
-            ./configure && make
+            ./configure
+            make
             make install
             ldconfig
       - run:
           name: Build and install libs-back
           command: |
+            GNUSTEP_MAKEFILES=/Developer/Makefiles
             git clone https://github.com/gnustep/libs-back
             cd libs-back
             git checkout nextspace
