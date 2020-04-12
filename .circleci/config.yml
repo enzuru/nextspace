@@ -20,6 +20,9 @@ jobs:
           name: Install libxml2
           command: yum -y install libxml2 libxml2-devel
       - run:
+          name: Install gnutls
+          command: yum -y install gnutls gnutls-devel
+      - run:
           name: Install X Window System
           command: yum -y groupinstall "X Window System"
       - run:
