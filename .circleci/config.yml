@@ -97,6 +97,7 @@ jobs:
       - run:
           name: Build and install libs-gui
           command: |
+            source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
             GNUSTEP_MAKEFILES=/Developer/Makefiles
             git clone https://github.com/gnustep/libs-gui
@@ -109,6 +110,7 @@ jobs:
       - run:
           name: Build and install libs-back
           command: |
+            source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
             GNUSTEP_MAKEFILES=/Developer/Makefiles
             git clone https://github.com/gnustep/libs-back
@@ -122,6 +124,7 @@ jobs:
       - run:
           name: Build and install Frameworks
           command: |
+            source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
             cd Frameworks
             yum -y install `grep "BuildRequires" nextspace-frameworks.spec | awk -c '{print $2}'
@@ -131,6 +134,7 @@ jobs:
       - run:
           name: Build and install Applications
           command: |
+            source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
             cd Applications
             yum -y install `grep "BuildRequires" nextspace-applications.spec | awk -c '{print $2}'`
