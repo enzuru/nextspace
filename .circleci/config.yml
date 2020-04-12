@@ -29,6 +29,9 @@ jobs:
           name: Install libicu
           command: yum -y install libicu libicu-devel
       - run:
+          name: Install libjpeg
+          command: yum -y install libjpeg libjpeg-devel
+      - run:
           name: Install which
           command: yum -y install which
       - run:
