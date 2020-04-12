@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: centos7
+      - image: amd64/centos:7
     steps:
       - run:
           name: Add EPEL
