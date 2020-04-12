@@ -63,7 +63,7 @@ jobs:
           command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/nextspace-applications-devel-0.85-3.el7.x86_64.rpm
       - run:
           name: Source profile
-          command: su
+          command: source /etc/profile.d/nextspace.sh
       - run:
           name: Build and install libs-base
           command: |
