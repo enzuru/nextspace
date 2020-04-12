@@ -38,6 +38,9 @@ jobs:
           name: Install libpng
           command: yum -y install libpng libpng-devel
       - run:
+          name: Install freetype
+          command: yum -y install freetype
+      - run:
           name: Install which
           command: yum -y install which
       - run:
