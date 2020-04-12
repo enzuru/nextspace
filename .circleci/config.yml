@@ -32,6 +32,12 @@ jobs:
           name: Install libjpeg
           command: yum -y install libjpeg libjpeg-devel
       - run:
+          name: Install libtiff
+          command: yum -y install libtiff libtiff-devel
+      - run:
+          name: Install libpng
+          command: yum -y install libpng libpng-devel
+      - run:
           name: Install which
           command: yum -y install which
       - run:
