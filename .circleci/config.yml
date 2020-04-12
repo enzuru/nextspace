@@ -1,0 +1,104 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: centos7
+    steps:
+      - run:
+          name: Add EPEL
+          command: yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      - run:
+          name: Update
+          command: yum -y update
+      - run:
+          name: Install X Window System
+          command: yum -y groupinstall "X Window System"
+      - run:
+          name: Install clang
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/clang-7.0.1-4.el7.x86_64.rpm
+      - run:
+          name: Install clang-libs
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/clang-libs-7.0.1-4.el7.x86_64.rpm
+      - run:
+          name: Install libdispatch
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/libdispatch-1.3.1121-3.el7.x86_64.rpm
+      - run:
+          name: Install libdispatch-devel
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/libdispatch-devel-1.3.1121-3.el7.x86_64.rpm
+      - run:
+          name: Install libobjc2
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/libobjc2-2.0-3.el7.x86_64.rpm
+      - run:
+          name: Install libojc2-devel
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/libobjc2-devel-2.0-3.el7.x86_64.rpm
+      - run:
+          name: Install llvm-libs
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/llvm-libs-7.0.1-3.el7.x86_64.rpm
+      - run:
+          name: Install nextspace-applications
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/nextspace-applications-0.85-3.el7.x86_64.rpm
+      - run:
+          name: Install nextspace-applications-devel
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/nextspace-applications-devel-0.85-3.el7.x86_64.rpm
+      - run:
+          name: Install nextspace-core
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/nextspace-core-0.95-8.el7.x86_64.rpm
+      - run:
+          name: Install nextspace-core-devel
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/nextspace-core-devel-0.95-8.el7.x86_64.rpm
+      - run:
+          name: Install nextspace-frameworks
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/nextspace-frameworks-0.85-2.el7.x86_64.rpm
+      - run:
+          name: Install nextspace-frameworks-devel
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/nextspace-frameworks-devel-0.85-2.el7.x86_64.rpm
+      - run:
+          name: Install nextspace-gnustep
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/nextspace-gnustep-1.26.0_0.25.0-2.el7.x86_64.rpm
+      - run:
+          name: Install nextspace-gnustep-devel
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/nextspace-gnustep-devel-1.26.0_0.25.0-2.el7.x86_64.rpm
+      - run:
+          name: Build and install libs-base
+          command: |
+            git clone https://github.com/gnustep/libs-base
+            cd libs-base
+            ./configure --disable-mixedabi
+            make
+            make install
+            ldconfig
+            cd
+      - run:
+          name: Build and install libs-gui
+          command: |
+            git clone https://github.com/gnustep/libs-gui
+            cd libs-gui
+            git checkout nextspace
+            ./configure && make
+            make install
+            ldconfig
+            cd
+      - run:
+          name: Build and install libs-back
+          command: |
+            git clone https://github.com/gnustep/libs-back
+            cd libs-back
+            git checkout nextspace
+            ./configure --enable-graphics=art --with-name=art
+            make
+            make fonts=no install
+            ldconfig
+            cd
+      - checkout
+      - run:
+          name: Build and install Frameworks
+          command: |
+            cd Frameworks
+            make
+            make install
+            ldconfig
+      - run:
+          name: Build and install Applications
+          command: |
+            make
+            make install
