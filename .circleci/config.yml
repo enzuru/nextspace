@@ -22,10 +22,10 @@ jobs:
       - run:
           name: Install gnutls
           command: yum -y install gnutls gnutls-devel
-       -run:
+      - run:
           name: Install libxslt
           command: yum -y install libxslt libxslt-devel
-       -run:
+      - run:
           name: Install libicu
           command: yum -y install libicu libicu-devel
       - run:
