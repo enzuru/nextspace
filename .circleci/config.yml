@@ -12,7 +12,7 @@ jobs:
           command: yum -y update
       - run:
           name: Install git
-          command: yum y install git
+          command: yum -y install git
       - run:
           name: Install X Window System
           command: yum -y groupinstall "X Window System"
@@ -94,6 +94,7 @@ jobs:
           name: Build and install Frameworks
           command: |
             cd Frameworks
+            yum -y install `grep "BuildRequires" nextspace-frameworks.spec | awk -c '{print $2}'
             make
             make install
             ldconfig
@@ -101,5 +102,6 @@ jobs:
           name: Build and install Applications
           command: |
             cd Applications
+            yum -y install `grep "BuildRequires" nextspace-applications.spec | awk -c '{print $2}'`
             make
             make install
