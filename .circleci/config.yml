@@ -42,10 +42,10 @@ jobs:
           command: yum -y install freetype freetype-devel
       - run:
           name: Install libart
-          command: yum install libart_lgpl libart_lgpl-devel
+          command: yum -y install libart_lgpl libart_lgpl-devel
       - run:
-          name: Install libX1ll
-          command: yum install libX11 libX11-devel
+          name: Install libX11
+          command: yum -y install libX11 libX11-devel
       - run:
           name: Install which
           command: yum -y install which
