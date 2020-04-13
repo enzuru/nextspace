@@ -161,6 +161,6 @@ jobs:
             source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
             cd Applications
-            yum -y install `grep "BuildRequires" nextspace-applications.spec | awk -c '{print $2}'``
+            yum -y install `grep "BuildRequires" nextspace-applications.spec | awk -c '{print $2}'`
             make
             make install
