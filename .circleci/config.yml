@@ -146,7 +146,7 @@ jobs:
       - run:
           name: Build and install Frameworks
           command: |
-            cd nextspace
+            cd /root/nextspace/nextspace
             source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
             cd Frameworks
@@ -157,7 +157,7 @@ jobs:
       - run:
           name: Build and install Applications
           command: |
-            cd nextspace
+            cd /root/nextspace/nextspace
             source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
             cd Applications
