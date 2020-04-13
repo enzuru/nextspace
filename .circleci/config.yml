@@ -47,6 +47,9 @@ jobs:
           name: Install libX11
           command: yum -y install libX11 libX11-devel
       - run:
+          name: Install libXt
+          command: yum -y install libXt libXt-devel
+      - run:
           name: Install which
           command: yum -y install which
       - run:
