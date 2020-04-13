@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -141,10 +141,12 @@ jobs:
             make
             make fonts=no install
             ldconfig
-      - checkout
+      - checkout:
+          path: /root/nextspace
       - run:
           name: Build and install Frameworks
           command: |
+            cd nextspace
             source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
             cd Frameworks
@@ -155,6 +157,7 @@ jobs:
       - run:
           name: Build and install Applications
           command: |
+            cd nextspace
             source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
             cd Applications
