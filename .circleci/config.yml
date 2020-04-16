@@ -90,7 +90,7 @@ jobs:
             CC=/usr/bin/clang
             cd Frameworks
             yum -y install `grep "BuildRequires" nextspace-frameworks.spec | awk -c '{print $2}'`
-            make
+            make 
             make install
             ldconfig
       - run:
@@ -101,5 +101,9 @@ jobs:
             CC=/usr/bin/clang
             cd Applications
             yum -y install `grep "BuildRequires" nextspace-applications.spec | awk -c '{print $2}'`
-            make
+            cd ../Libraries/libwraster
+            make 
+            make install
+            cd ../Applications
+            make 
             make install
