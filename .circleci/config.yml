@@ -55,7 +55,7 @@ jobs:
             yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/clang-libs-7.0.1-4.el7.x86_64.rpm
             yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/clang-7.0.1-4.el7.x86_64.rpm
       - run:
-          name: GNUstep Base: install build dependencies
+          name: GNUstep Base - install build dependencies
           command: yum -y install libffi-devel gnutls-devel openssl-devel libicu-devel libxml2-devel libxslt-devel
       - run:
           name: GNUstep Base - build and install
