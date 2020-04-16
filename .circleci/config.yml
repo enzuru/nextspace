@@ -104,6 +104,6 @@ jobs:
             cd ../Libraries/libwraster
             make 
             make install
-            cd ../Applications
+            cd ../../Applications
             make 
             make install
