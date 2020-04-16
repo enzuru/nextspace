@@ -58,7 +58,7 @@ jobs:
           name: GNUstep Base: install build dependencies
           command: yum -y install libffi-devel gnutls-devel openssl-devel libicu-devel libxml2-devel libxslt-devel
       - run:
-          name: GNUstep Base: build and install
+          name: GNUstep Base - build and install
           command: |
             source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
@@ -70,10 +70,10 @@ jobs:
             make install
             ldconfig
       - run:
-          name: GNUstep GUI: install build dependencies
+          name: GNUstep GUI - install build dependencies
           command: yum -y install giflib-devel libjpeg-turbo-devel libpng-devel libtiff-devel libao-devel libsndfile-devel
       - run:
-          name: GNUstep GUI: build and install
+          name: GNUstep GUI - build and install
           command: |
             source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
@@ -86,11 +86,11 @@ jobs:
             make install
             ldconfig
       - run:
-          name: GNUstep Back: install build dependencies
+          name: GNUstep Back - install build dependencies
           command: yum -y install libart_lgpl-devel freetype-devel mesa-libGL-devel libX11-devel libXcursor-devel \
                    libXext-devel libXfixes-devel libXmu-devel libXt-devel libXrandr-devel
       - run:
-          name:  GNUstep Back: build and install
+          name:  GNUstep Back - build and install
           command: |
             source /etc/profile.d/nextspace.sh
             CC=/usr/bin/clang
