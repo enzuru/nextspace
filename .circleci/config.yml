@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: amd64/centos:7
+      - image: amd64/centos:7.7.1908
     steps:
       - run:
           name: Add EPEL
@@ -12,16 +12,16 @@ jobs:
           command: yum -y update
       - run:
           name: Install git
-          command: yum -y install git libffi-devel libxml2-devel gnutls-devel libxslt-devel libicu-devel libjpeg-devel libtiff-devel libpng-devel freetype-devel libart_lgpl-devel libX11-devel libXt-devel which
+          command: yum -y install git libffi-devel libxml2-devel gnutls-devel \
+                   libxslt-devel libicu-devel libjpeg-devel libtiff-devel libpng-devel \
+                   freetype-devel libart_lgpl-devel libX11-devel libXt-devel which
       - run:
           name: Install X Window System
           command: yum -y groupinstall "X Window System"
       - run:
-          name: Install clang-libs
-          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/clang-libs-7.0.1-4.el7.x86_64.rpm
-      - run:
-          name: Install clang
-          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/clang-7.0.1-4.el7.x86_64.rpm
+          name: Install Clang
+          command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/clang-libs-7.0.1-4.el7.x86_64.rpm \
+                   https://github.com/trunkmaster/nextspace/releases/download/0.85/clang-7.0.1-4.el7.x86_64.rpm
       - run:
           name: Install libdispatch
           command: yum -y install https://github.com/trunkmaster/nextspace/releases/download/0.85/libdispatch-1.3.1121-3.el7.x86_64.rpm
